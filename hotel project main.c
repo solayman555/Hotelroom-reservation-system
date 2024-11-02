@@ -111,6 +111,7 @@ break;
         printf("\nHello user and welcome to DSC RESORT\n");
                 printf("1.view available rooms\n");
    	            printf("2.request booking of room\n");
+        printf("Enter your choice: ");
                 scanf("%d",&c);
                 switch(c)
                 {
