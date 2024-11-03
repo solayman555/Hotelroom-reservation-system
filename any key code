@@ -1,5 +1,0 @@
-
-void waitForKeyPress() {
-    printf("Press Enter to return to the main menu...\n");
-    while (getchar() != '\n'); // Wait for the user to press Enter
-}
