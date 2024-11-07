@@ -63,53 +63,48 @@ for(int i=0;i<l;i++)
     ////////////////////////
     switch(a)
     {
-    case 1:
+     case 1:
     {
-        char pass[10];
-X:
-        printf("\t\tEnter Your password : ");
-        scanf("%s",&pass);
-        if(strcmp(pass,"admin")==0)
-        {
-            for(int i=1; i<115; i++)
+        int pass[10];
+    int passfile[10];
+        FILE *password;
+password=fopen("pass.txt","r");
+    X:
+        printf("\t\tEnter Your password: ");
+scanf("%s",pass);
+fscanf(password,"%s",passfile);
+if(strcmp(passfile,pass)==0)
+{
+      for(int i=1; i<115; i++)
             {
                 printf("~");
                 usleep(1000);
             }
-            printf("\n\t\t\t\tWelcome Admin");
+
+       printf("\n\t\t\t\tWelcome Admin");
             printf("\n\t\t\t\t-------------\n");
             printf("\t1.VIEW booking requests\n");
             printf("\t2.VIEW booked guests details\n");
             printf("\t3.ENTER new guest\n");
+            printf("\t4.EXIT\n");
+
             int x;
             scanf("%d",&x);
             switch(x)
             {
-            case 1:
-            {
-                ///////////////
-          }
-            case 2:
-            {
-//////////////////////////////
-            }
-            case 3:
-                {
-/////////////////////////////////
-                }
-            }
 
-        }
+            }
+}
+
         else
         {
             printf("\n\t\tWrong password.Access Denied\n\t\tTry again....\n");
             c++;
-            if(c==3)break;
+            if(c==4)break;
             goto X;
         }
 break;
     }
-    int c;
     case 2:
         printf("\nHello user and welcome to DSC RESORT\n");
                 printf("1.view available rooms\n");
