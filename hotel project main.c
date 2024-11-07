@@ -82,8 +82,9 @@ X:
                 usleep(1000);
             }
             system("clear");
-            printf("\n\t\t\t\tWelcome Admin");
-            printf("\n\t\t\t\t-------------\n");
+            printf("\n\t\t\t\t---------------");
+            printf("\n\t\t\t\t|Welcome Admin|");
+            printf("\n\t\t\t\t---------------\n");
             printf("\t1.VIEW booking requests\n");
             printf("\t2.VIEW booked guests details\n");
             printf("\t3.ENTER new guest\n");
@@ -109,9 +110,10 @@ X:
         break;
     }
     case 2:
-                    system("clear");
-        printf("\t\t\tGood afternoon,welcome to DSC\n");
-        printf("\t\t\t-----------------------------\n");
+        system("clear");
+        printf("\t\t\t---------------------------------\n");
+        printf("\t\t\t| Good afternoon,welcome to DSC |\n");
+        printf("\t\t\t---------------------------------\n");
         printf("\t1.view available rooms\n");
         printf("\t2.request booking of room\n");
         printf("\t3.Cancel Booking\n");
@@ -125,7 +127,8 @@ X:
         {
 
         }
-        case 4: goto Y;
+        case 4:
+            goto Y;
 
 
         }
