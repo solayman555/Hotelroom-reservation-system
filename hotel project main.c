@@ -49,7 +49,7 @@ int main()
         usleep(1000);
     }
     printf("\n\n");
-    for(int i=1; i<115; i++)
+    for(int i=1; i<118; i++)
     {
         printf("-");
         usleep(1000);
@@ -81,7 +81,7 @@ X:
                 printf("~");
                 usleep(1000);
             }
-
+            system("clear");
             printf("\n\t\t\t\tWelcome Admin");
             printf("\n\t\t\t\t-------------\n");
             printf("\t1.VIEW booking requests\n");
@@ -109,6 +109,7 @@ X:
         break;
     }
     case 2:
+                    system("clear");
         printf("\t\t\tGood afternoon,welcome to DSC\n");
         printf("\t\t\t-----------------------------\n");
         printf("\t1.view available rooms\n");
@@ -131,4 +132,3 @@ X:
     }
     return 0;
 }
-
