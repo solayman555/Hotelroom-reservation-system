@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<string.h>
+
 int main()
 {
     int a;
@@ -20,12 +22,13 @@ int main()
     printf("\t      *");
     printf("\n");
     printf("    \t\t\t*          ");
-    char b[]= {'|',' ','W','e','l','c','o','m','e',' ','T','o',' ','D','S','C',' ','R','E','S','O','R','T',' ','|'};
-    for(int i=0; i<25; i++)
-    {
-        printf("%c",b[i]);
-        usleep(100000);
-    }
+    char b[]="| Welcome To DSC RESORT |";
+  int l=strlen(b);
+for(int i=0;i<l;i++)
+{
+    printf("%c",b[i]);
+    usleep(100000);
+}
     printf("\t      *\n");
 
 
