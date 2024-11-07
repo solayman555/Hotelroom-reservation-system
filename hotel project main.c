@@ -23,12 +23,12 @@ int main()
     printf("\n");
     printf("    \t\t\t*          ");
     char b[]="| Welcome To DSC RESORT |";
-  int l=strlen(b);
-for(int i=0;i<l;i++)
-{
-    printf("%c",b[i]);
-    usleep(100000);
-}
+    int l=strlen(b);
+    for(int i=0; i<l; i++)
+    {
+        printf("%c",b[i]);
+        usleep(100000);
+    }
     printf("\t      *\n");
 
 
@@ -56,6 +56,7 @@ for(int i=0;i<l;i++)
     }
     printf("\n\n");
     int c=1;
+Y :
     printf("\t\t\t1.Admin\n");
     printf("\t\t\t2.Users\n");
     printf("\t\tEnter Your Choice : ");
@@ -63,38 +64,40 @@ for(int i=0;i<l;i++)
     ////////////////////////
     switch(a)
     {
-     case 1:
+    case 1:
     {
         int pass[10];
-    int passfile[10];
+        int passfile[10];
         FILE *password;
-password=fopen("pass.txt","r");
-    X:
+        password=fopen("pass.txt","r");
+X:
         printf("\t\tEnter Your password: ");
-scanf("%s",pass);
-fscanf(password,"%s",passfile);
-if(strcmp(passfile,pass)==0)
-{
-      for(int i=1; i<115; i++)
+        scanf("%s",pass);
+        fscanf(password,"%s",passfile);
+        if(strcmp(passfile,pass)==0)
+        {
+            for(int i=1; i<115; i++)
             {
                 printf("~");
                 usleep(1000);
             }
 
-       printf("\n\t\t\t\tWelcome Admin");
+            printf("\n\t\t\t\tWelcome Admin");
             printf("\n\t\t\t\t-------------\n");
             printf("\t1.VIEW booking requests\n");
             printf("\t2.VIEW booked guests details\n");
             printf("\t3.ENTER new guest\n");
             printf("\t4.EXIT\n");
-
             int x;
+            printf("\tEnter Your choice: ");
             scanf("%d",&x);
             switch(x)
             {
-
+            //cases
+            case 4:
+                goto Y;
             }
-}
+        }
 
         else
         {
@@ -103,27 +106,28 @@ if(strcmp(passfile,pass)==0)
             if(c==4)break;
             goto X;
         }
-break;
+        break;
     }
     case 2:
-        printf("\nHello user and welcome to DSC RESORT\n");
-                printf("1.view available rooms\n");
-   	            printf("2.request booking of room\n");
+        printf("\t\t\tGood afternoon,welcome to DSC\n");
+        printf("\t\t\t-----------------------------\n");
+        printf("\t1.view available rooms\n");
+        printf("\t2.request booking of room\n");
+        printf("\t3.Cancel Booking\n");
+        printf("\t4.EXIT\n");
+
         printf("Enter your choice: ");
-                scanf("%d",&c);
-                switch(c)
-                {
-                case 1:
-            {
+        scanf("%d",&c);
+        switch(c)
+        {
+        case 1:
+        {
 
-            }
-                case 2:
+        }
+        case 4: goto Y;
 
-{
 
-}
-
-                }
+        }
     }
     return 0;
 }
