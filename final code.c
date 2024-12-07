@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #define MAX_RESERVATIONS 50
 #define MAX_GUEST_NAME_LENGTH 100
 #define RESERVATION_FILE "reservations.txt"
@@ -17,6 +16,189 @@ typedef struct
 
 Reservation reservations[MAX_RESERVATIONS];
 int reservationCount = 0;
+void payment();
+void services();
+void loadReservations();
+void saveReservations();
+void showRoomStatus();
+int isRoomAvailable(int roomNumber);
+void addReservation();
+void displayReservations();
+void searchReservation();
+void deleteReservation();
+void design();
+int main()
+{
+    loadReservations();
+Y :
+    design();
+    int a,c=1;
+    printf("\t\t1.Admin\n");
+    printf("\t\t2.Users\n");
+    T :
+    printf("\t\tEnter Your Choice : ");
+    scanf("%d",&a);
+    switch(a)
+    {
+    case 1:
+    {
+        int pass[10];
+        int passfile[10];
+        FILE *password;
+        password=fopen("pass.txt","r");
+X:
+        printf("\t\tEnter Your password: ");
+        scanf("%s",pass);
+        fscanf(password,"%s",passfile);
+        if(strcmp(passfile,pass)==0)
+        {
+            for(int i=1; i<115; i++)
+            {
+                printf("~");
+                usleep(1000);
+            }
+            int choice;
+            do
+            {
+A :
+                system("cls");
+                printf("\n\t\t\t\t---------------");
+                printf("\n\t\t\t\t|Welcome Admin|");
+                printf("\n\t\t\t\t---------------\n");
+                printf("\t1. Add Reservation\n");
+                printf("\t2. Display Reservations\n");
+                printf("\t3. Search Reservation\n");
+                printf("\t4. Delete Reservation\n");
+                printf("\t5. Show Room Availability\n");
+                printf("\t6. Exit\n");
+                printf("\tEnter your choice: ");
+                scanf("%d", &choice);
+
+                switch (choice)
+                {
+                case 1:
+                     system("cls");
+                    addReservation();
+                 printf("\n\n\tPress any key to go to main menu...");
+                    getch();
+                    goto A;
+                case 2:
+                    displayReservations();
+                    printf("\n\tPress any key to go to main menu...");
+                    getch();
+                    goto A;
+                case 3:
+                    system("cls");
+
+                    searchReservation();
+                    printf("\n\t\tPress any key to go to main menu...");
+                    getch();
+                    goto A;
+                case 4:
+                    deleteReservation();
+
+                    goto A;
+                case 5:
+                    showRoomStatus();
+                    goto A;
+                case 6:
+                    system("cls");
+                    goto Y;
+                default:
+                    printf("Invalid choice, please try again.\n");
+                }
+            }
+            while (choice != 6);
+        }
+        else
+        {
+            printf("\n\t\tWrong password.Access Denied\n\t\tTry again....\n");
+            c++;
+            if(c==4)break;
+            goto X;
+        }
+    }
+    case 2:
+   U :
+        system("cls");
+        printf("\t\t\t---------------------------------\n");
+        printf("\t\t\t| Good afternoon,welcome to DSC |\n");
+        printf("\t\t\t---------------------------------\n");
+         printf("\t1.View available rooms\n");
+        printf("\t2.Request Booking of room\n");
+        printf("\t3.View Our Services\n");
+        printf("\t4.Cancel Booking\n");
+        printf("\t5.Check-Out\n");
+        printf("\t6.EXIT\n");
+        printf("Enter your choice: ");
+        scanf("%d",&c);
+        switch(c)
+        {
+        case 1:
+        showRoomStatus();
+                goto U;
+        case 2:
+           system("cls");
+                    addReservation();
+                 printf("\n\n\tPress any key to go to main menu...");
+                    getch();
+                    goto U;
+        case 3:
+
+            system("cls");
+            services();
+            char t[5];
+F:
+            printf("\n   Do you want to go to User menu?(y/n): ");
+            scanf("%s",&t);
+            if(strcmp(t,"n")==0)
+            {
+                return 0;
+            }
+            else if(strcmp(t,"y")==0)
+                goto U;
+            else
+            {
+                printf("\nWrong Entry....Try Again...\n\n");
+                goto F;
+        }
+        case 4:
+        deleteReservation();
+        goto U;
+        case 5:
+        payment();
+                char h[2];
+H :
+                printf("\nDo you want to go to main menu?(y/n): ");
+                scanf("%s",&h);
+                if(strcmp(h,"n")==0)
+                {
+                    return 0;
+                }
+                else if(strcmp(h,"y")==0)
+                {
+                    system("cls");
+                    goto Y;
+                }
+                else
+                {
+                    printf("\nWrong Entry....Try Again...\n\n");
+                    goto H;
+                }
+        case 6:
+               system("cls");
+                    goto Y;
+           default:
+        printf("Invalid choice, please try again.\n");
+        goto U;
+         }
+
+        default:
+        printf("Invalid choice, please try again.\n");
+        goto T;
+    }
+    return 0;
+}
 void payment()
 {
     system("cls");
@@ -256,10 +438,10 @@ void showRoomStatus()
     printf("\n\n\t\tPress any key to go to main menu...");
     getch();
 }
-
 int isRoomAvailable(int roomNumber)
 {
-    system("cls");
+
+ system("cls");
 
     for (int i = 0; i < reservationCount; i++)
     {
@@ -345,7 +527,6 @@ void addReservation()
     printf("\n\t\t\t---------------------------------");
 
 }
-
 void displayReservations()
 {
     system("cls");
@@ -438,7 +619,6 @@ void searchReservation()
 
     }
 }
-
 void deleteReservation()
 {
     system("cls");
@@ -540,176 +720,4 @@ void design()
 
     }
     printf("\n\t\t\t``````````````````````````````````````\n");
-}
-int main()
-{
-    loadReservations();
-Y :
-    design();
-    int a,c=1;
-    printf("\t\t1.Admin\n");
-    printf("\t\t2.Users\n");
-    T :
-    printf("\t\tEnter Your Choice : ");
-    scanf("%d",&a);
-    switch(a)
-    {
-    case 1:
-    {
-        int pass[10];
-        int passfile[10];
-        FILE *password;
-        password=fopen("pass.txt","r");
-X:
-        printf("\t\tEnter Your password: ");
-        scanf("%s",pass);
-        fscanf(password,"%s",passfile);
-        if(strcmp(passfile,pass)==0)
-        {
-            for(int i=1; i<115; i++)
-            {
-                printf("~");
-                usleep(1000);
-            }
-            int choice;
-            do
-            {
-A :
-                system("cls");
-                printf("\n\t\t\t\t---------------");
-                printf("\n\t\t\t\t|Welcome Admin|");
-                printf("\n\t\t\t\t---------------\n");
-                printf("\t1. Add Reservation\n");
-                printf("\t2. Display Reservations\n");
-                printf("\t3. Search Reservation\n");
-                printf("\t4. Delete Reservation\n");
-                printf("\t5. Show Room Availability\n");
-                printf("\t6. Exit\n");
-                printf("\tEnter your choice: ");
-                scanf("%d", &choice);
-
-                switch (choice)
-                {
-                case 1:
-                     system("cls");
-                    addReservation();
-                 printf("\n\n\tPress any key to go to main menu...");
-                    getch();
-                    goto A;
-                case 2:
-                    displayReservations();
-                    printf("\n\tPress any key to go to main menu...");
-                    getch();
-                    goto A;
-                case 3:
-                    system("cls");
-
-                    searchReservation();
-                    printf("\n\t\tPress any key to go to main menu...");
-                    getch();
-                    goto A;
-                case 4:
-                    deleteReservation();
-
-                    goto A;
-                case 5:
-                    showRoomStatus();
-                    goto A;
-                case 6:
-                    system("cls");
-                    goto Y;
-                default:
-                    printf("Invalid choice, please try again.\n");
-                }
-            }
-            while (choice != 6);
-        }
-        else
-        {
-            printf("\n\t\tWrong password.Access Denied\n\t\tTry again....\n");
-            c++;
-            if(c==4)break;
-            goto X;
-        }
-    }
-    case 2:
-   U :
-        system("cls");
-        printf("\t\t\t---------------------------------\n");
-        printf("\t\t\t| Good afternoon,welcome to DSC |\n");
-        printf("\t\t\t---------------------------------\n");
-         printf("\t1.View available rooms\n");
-        printf("\t2.Request Booking of room\n");
-        printf("\t3.View Our Services\n");
-        printf("\t4.Cancel Booking\n");
-        printf("\t5.Check-Out\n");
-        printf("\t6.EXIT\n");
-        printf("Enter your choice: ");
-        scanf("%d",&c);
-        switch(c)
-        {
-        case 1:
-        showRoomStatus();
-                goto U;
-        case 2:
-           system("cls");
-                    addReservation();
-                 printf("\n\n\tPress any key to go to main menu...");
-                    getch();
-                    goto U;
-        case 3:
-
-            system("cls");
-            services();
-            char t[5];
-F:
-            printf("\n   Do you want to go to User menu?(y/n): ");
-            scanf("%s",&t);
-            if(strcmp(t,"n")==0)
-            {
-                return 0;
-            }
-            else if(strcmp(t,"y")==0)
-                goto U;
-            else
-            {
-                printf("\nWrong Entry....Try Again...\n\n");
-                goto F;
-        }
-        case 4:
-        deleteReservation();
-        goto U;
-        case 5:
-        payment();
-                char h[2];
-H :
-                printf("\nDo you want to go to main menu?(y/n): ");
-                scanf("%s",&h);
-                if(strcmp(h,"n")==0)
-                {
-                    return 0;
-                }
-                else if(strcmp(h,"y")==0)
-                {
-                    system("cls");
-                    goto Y;
-                }
-                else
-                {
-                    printf("\nWrong Entry....Try Again...\n\n");
-                    goto H;
-                }
-        case 6:
-               system("cls");
-                    goto Y;
-           default:
-        printf("Invalid choice, please try again.\n");
-        goto U;
-         }
-
-        default:
-        printf("Invalid choice, please try again.\n");
-        goto T;
-    }
-    return 0;
 }
